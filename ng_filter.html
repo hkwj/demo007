@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset= "UTF-8">
+<style>
+
+</style>
+
+<script src="work/angular.js"></script>
+
+</head>
+
+<body ng-app="index" ng-controller="test">
+{{a}}
+<br>
+{{a|toFixed:2}}
+<br>
+
+
+
+<script>
+var app=angular.module('index',[]);
+app.filter('toFixed',function(){
+	return function(text,n){
+		return text.toFixed(n);
+	}
+})
+app.controller('test',function($scope){
+	$scope.a=12;
+})
+
+</script>
+</body>
+</html> 
