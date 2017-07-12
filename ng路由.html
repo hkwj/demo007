@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="index">
+<head>
+	<meta charset= "UTF-8">
+
+<script src="work/angular.js"></script>
+<script src="work/angular-route.js"></script>
+
+<script type="text/ng-template" id="index">
+<div>
+	<header>标题{{title}}</header>
+</div>
+</script>
+
+<script type="text/ng-template" id="news">
+<ul>
+	<li ng-repeat="item in arr">{{item}}</li>
+</ul>	
+</script>
+
+
+</head>
+
+<body ng-controller="test">
+	 <ul>
+   		<li><a href="#/index">首页</a></li>
+   		<li><a href="#/news">新闻</a></li>
+   </ul>
+   <!--<ng-view></ng-view>-->
+   <div ng-view></div>
+
+
+
+<script>
+
+var app=angular.module('index',['ngRoute']);
+app.config(function($routeProvider){
+	$routeProvider.when("/index",{
+		templateUrl:"index",
+		controller:"indexCtrl"
+	}).when("/news",{
+		templateUrl:"news",
+		controller:"newsCtrl"
+	}).otherwise({
+        redirectTo: "/index"
+    });
+});
+
+app.controller("indexCtrl",function($scope){
+	$scope.title = "index_title!~~~~";	
+});
+
+app.controller("newsCtrl",function($scope){
+	$scope.arr = ["new1","new2","new3","new4"];	
+});
+
+app.controller("test",function($scope){
+	 
+});
+
+
+</script>
+</body>
+</html> 
