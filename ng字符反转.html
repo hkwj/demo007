@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset= "UTF-8">
+<style>
+div{
+	width:100px; height:100px; border:1px solid red;
+	float:left; margin-left:4px;
+}
+</style>
+
+<script src="work/angular.js"></script>
+
+</head>
+
+<body ng-app="index" ng-controller="test">
+
+<input type="text" value="" ng-model="a" />
+<br>
+{{a}}
+<br>
+{{reverse(a)}}
+<br>
+{{a|reverse}}
+<br>
+
+
+<script>
+var app=angular.module('index',[]);
+app.controller('test',function($scope){
+	$scope.a='';
+});
+
+app.filter('reverse',function(){
+	return function(text){
+		return text.split('').reverse().join('');
+	}
+});
+
+
+
+
+
+
+</script>
+</body>
+</html> 
