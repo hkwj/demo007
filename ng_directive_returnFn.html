@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="index">
+<head>
+	<meta charset= "UTF-8">
+	
+<style>
+div{
+	width:100px; height:100px; 
+	background:red;
+}
+</style>
+
+<script src="work/angular.js"></script>
+
+
+</head>
+
+<body  ng-controller="test">
+
+<div ng-red></div>
+
+<script>
+var app=angular.module('index',[]);
+app.directive('ngRed',function(){
+	return function(scope,element,attr){
+		alert(scope.a);
+		element.css('background','green');
+	};
+});
+
+app.controller('test',function($scope){
+	$scope.a=111;
+})
+
+
+</script>
+</body>
+</html> 
