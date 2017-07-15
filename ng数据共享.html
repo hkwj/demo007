@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="index">
+<head>
+	<meta charset= "UTF-8">
+	
+<style>
+
+</style>
+
+<script src="work/angular.js"></script>
+
+
+</head>
+
+<body>
+
+<div ng-controller="aaa">
+	{{a}}
+	<div ng-controller="bbb">
+		<input type="number" value="" ng-model="b" ng-change="show();" />
+	</div>
+	<div ng-controller="ccc">
+		bbb的同级：{{a}}
+	</div>
+</div>
+
+
+<p>$broadcast的作用是将事件从父级作用域传播至子级作用域,包括自己。格式如下：$broadcast(eventName,args)
+$emit的作用是将事件从子级作用域传播至父级作用域,包括自己，直至根作用域。格式如下：$emit(eventName,args)
+$on用于在作用域中监控从子级或父级作用域中传播的事件以及相应的数据。格式如下：$on(event,data)
+上述说明中，eventName是需要监控的事件的名称，$on 方法中的参数event是事件的相关对象，data是事件传播的数据。</p>
+
+<script>
+
+var app=angular.module('index',[]);
+app.controller('aaa',function($scope){
+	$scope.a=1;
+
+	$scope.$on('data',function(event,data){
+		$scope.a=data+1;
+		$scope.$broadcast('new-data',data);
+	})
+});
+
+app.controller('bbb',function($scope){
+	$scope.b=0;
+	$scope.show=function(){
+		$scope.$emit('data',$scope.b);
+	};
+});
+
+app.controller('ccc',function($scope){
+	$scope.a=-1;
+	$scope.$on('new-data',function(event,data){
+		$scope.a=data-1;
+	})
+})
+
+
+
+</script>
+</body>
+</html> 
