@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset= "UTF-8">
+
+<style>
+#div1 input{
+	background:#ccc;
+}
+#div1 input.active{
+	background:red;
+}
+#div1 div{
+	width:100px; height:50px;
+	text-align:center; line-height:50px;
+	display:none; border:1px solid green;
+}
+#div1 div.cur{
+	display:block;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="div1">
+	<input type="button" value="aaa" class="active">
+	<input type="button" value="bbb">
+	<input type="button" value="ccc">
+
+	<div class="cur">aaa</div>
+	<div>bbb</div>
+	<div>ccc</div>
+</div>
+
+
+
+<script>
+var arr=[1,2,3];
+var len=arr.length;
+
+var arr1=[];
+for(var i=0; i<len; i++){
+	//arr1.push(arr.pop());
+	//arr1.unshift(arr.shift());
+	//arr1[i]=arr[len-i-1];
+}
+
+arr1=arr.reverse();
+
+console.log(arr1);
+
+
+</script>
+</body>
+</html> 
