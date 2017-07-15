@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="index">
+<head>
+	<meta charset= "UTF-8">
+	
+<style>
+
+</style>
+
+<script src="work/angular.js"></script>
+
+
+</head>
+
+<body>
+
+<div ng-controller="test">
+	{{a}}
+</div>
+
+
+
+<script>
+var app=angular.module('index',[]);
+
+app.factory('$myServer',function(){
+	return {width:'200px',height:'200px'};
+});
+
+app.controller('test',function($scope,$myServer){
+	$scope.a=$myServer;
+})
+
+
+
+</script>
+</body>
+</html> 
