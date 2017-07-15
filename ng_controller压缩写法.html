@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="index">
+<head>
+	<meta charset= "UTF-8">
+	
+<style>
+
+</style>
+
+<script src="work/angular.js"></script>
+
+
+</head>
+
+<body ng-controller="test">
+
+{{a}}
+
+
+
+
+<script>
+var app=angular.module('index',[]);
+app.controller('test',['$scope',function(a){
+	a.a=111;
+}])
+
+
+
+</script>
+</body>
+</html> 
