@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset= "UTF-8">
+
+<style>
+#div1 input{
+	background:#ccc;
+}
+#div1 input.active{
+	background:red;
+}
+#div1 div{
+	width:100px; height:50px;
+	text-align:center; line-height:50px;
+	display:none; border:1px solid green;
+}
+#div1 div.cur{
+	display:block;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="div1">
+	<input type="button" value="aaa" class="active">
+	<input type="button" value="bbb">
+	<input type="button" value="ccc">
+
+	<div class="cur">aaa</div>
+	<div>bbb</div>
+	<div>ccc</div>
+</div>
+
+
+
+<script>
+var oDiv=document.getElementById('div1');
+var aHead=oDiv.getElementsByTagName('input');
+var aContent=oDiv.getElementsByTagName('div');
+var now=0;
+var timer=null;
+
+for(var i=0; i<aHead.length; i++){
+	(function(index){
+		aHead[i].onclick=function(){
+			now=index;
+			tab();
+		}
+	})(i)
+};
+
+function tab(){
+	for(var i=0; i<aHead.length; i++){
+		aHead[i].className='';
+		aContent[i].className='';
+	};
+	aHead[now].className='active';
+	aContent[now].className='cur';
+};
+
+next();
+
+function next(){
+	timer=setInterval(function(){
+		now++;
+		now%=3;
+		tab();
+	},1000)
+};
+
+oDiv.onmouseover=function(){
+	clearInterval(timer);
+};
+
+oDiv.onmouseout=next;
+
+
+
+
+
+</script>
+</body>
+</html> 
