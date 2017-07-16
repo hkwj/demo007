@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset= "UTF-8">
+
+<style>
+*{ margin:0; padding:0; list-style:none; font-family: "微软雅黑","张海山锐线体简"}
+#div1 input.active{ background:red;}
+#div1 div{ display:none; background:red; height:50px;}
+#div1 div.cur{ display:block;}
+</style>
+
+
+</head>
+
+<body>
+
+<form action="xxx.php"  id="btn1">
+    用户名:<input type="text" value="" id="user"><br>
+    密码:<input type="password" value="" id="pw"><br>
+    <input type="submit" value="提交">
+</form>
+
+
+<script>
+
+function removeCookie(name){
+	setCookie(name,'',-1);
+};
+
+
+function getCookie(name){
+	var arr=document.cookie.split('; ');
+	for(var i=0; i<arr.length; i++){
+		var arr2=arr[i].split('=');
+		if(arr2[0]==name){
+			return arr2[1];
+		}
+	}
+
+	return '';
+}
+
+
+
+function setCookie(name,value,timeout){
+	var d=new Date();
+	d.setDate(d.getDate()+timeout);
+	document.cookie=name+'='+value+'; expires='+d;
+}
+
+
+
+
+var oUser=document.getElementById('user');
+var oPass=document.getElementById('pw');
+var oBtn=document.getElementById('btn1');
+var user = getCookie('user');
+var pass = getCookie('pass');
+
+oUser.value=user;
+if(user && pass){
+	oPass.value=pass;
+	oBtn.submit();
+};
+
+oBtn.onsubmit=function(){
+	setCookie('user',oUser.value,1100);
+	setCookie('pass',oPass.value,1000);
+}
+
+
+</script>
+</body>
+</html> 
