@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset= "UTF-8">
+
+<style>
+
+</style>
+</head>
+
+<body>
+
+
+
+
+
+<script>
+
+function bubble(array){
+	var tmp;
+	var len=array.length; 
+	for(var i=0; i<len-1; i++){
+		for(var j=0; j<len-1-i; j++){
+			if(array[j]<array[j+1]){
+				tmp=array[j];
+				array[j]=array[j+1];
+				array[j+1]=tmp;
+			}
+		}
+	}
+	return array;
+}
+var arr=[1,2,3,2,4,5];
+
+console.log(bubble(arr));
+
+
+</script>
+</body>
+</html> 
