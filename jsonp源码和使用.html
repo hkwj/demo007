@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset= "UTF-8">
+
+<style>
+
+</style>
+
+<script>
+function jsonp(options){
+	options=options||{};
+	if(!options.url) return;
+	if(!options.data) return;
+
+	options.cbKey=options.cbKey||'cb';
+	options.timeout=options.timeout||0;
+	options.success=options.success||null;
+	options.error=options.error||null;
+
+	var cbValue='jsonp'+Math.random();
+	options.data[options.cbKey]=cbValue.replace('.','');
+
+	window[options.data[options.cbKey]]=function(json){
+		options.success && options.success(json);
+		clearTimeout(timer);
+		document.getElementsByTagName('head')[0].removeChild(oSc);
+		window[options.data[options.cbKey]]=null;
+	};
+
+	var arr=[];
+	for(var key in options.data){
+		arr.push(key+'='+encodeURIComponent(options.data[key]));
+	}
+
+	options.url=options.url+'?'+arr.join('&');
+
+	var oSc=document.createElement('script');
+	oSc.src=options.url;
+	document.getElementsByTagName('head')[0].appendChild(oSc);
+
+
+	if(options.timeout){
+		var timer=setTimeout(function(){
+			options.error && options.error();
+			window[options.data[options.cbKey]]=function(){};
+		},options.timeout);
+	}
+
+}	
+
+</script>
+
+</head>
+
+<body>
+
+
+<!-- <div id="div1"></div> -->
+
+
+
+<script>
+jsonp({
+	url:  'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',
+	data: {wd:'你好'},
+	success:function(json){
+		alert(json.s);
+	},
+	error: function(){
+		alert('overTime');
+	},
+	timeout: 1000,
+	cbKey: 'cb'
+})
+
+
+
+// console.log  application  su
+
+
+//  jQuery110207253171252980932_1500557192632({
+
+//  	"q":"你好","p":false,"bs":"迅雷","csor":"0","status":0,
+
+
+// 	"g":[ 
+// 		{ "q": "你好的日语", "t": "n", "st": { "q": "你好的日语", "new": 0 } }, 
+// 		{ "q": "你好疯子", "t": "n", "st": { "q": "你好疯子", "new": 0 } }, 
+// 		{ "q": "你好日语", "t": "n", "st": { "q": "你好日语", "new": 0 } }, 
+// 		{ "q": "你好旧时光", "t": "n", "st": { "q": "你好旧时光", "new": 0 } }, 
+// 		{ "q": "你好乔安", "t": "n", "st": { "q": "你好乔安", "new": 0 } }, 
+// 		{ "q": "你好邻居", "t": "n", "st": { "q": "你好邻居", "new": 0 } }, 
+// 		{ "q": "你好啊", "t": "n", "st": { "q": "你好啊", "new": 0 } }, 
+// 		{ "q": "你好李焕英", "t": "n", "st": { "q": "你好李焕英", "new": 0 } }, 
+// 		{ "q": "你好陌生人", "t": "n", "st": { "q": "你好陌生人", "new": 0 } }, 
+// 		{ "q": "你好是鹿晗吗", "t": "n", "st": { "q": "你好是鹿晗吗", "new": 0 } } ],
+
+
+// 		"s":["你好的日语","你好疯子","你好日语","你好旧时光","你好乔安","你好邻居","你好啊","你好李焕英","你好陌生人","你好是鹿晗吗"]
+
+// });
+
+
+</script>
+
+
+</body>
+</html> 
