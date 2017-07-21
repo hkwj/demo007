@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset= "UTF-8">
+
+<style>
+div{
+	width:200px; height:100px;
+	background:yellow; position:absolute;
+	left:0; top:0;
+}
+</style>
+
+
+
+
+<script>
+function show(json){
+	alert(json.s);
+};
+
+function show111(json){
+	alert(json.s);
+}
+
+//data.wd可以变化 data.cb可以变化  要和写好的function保持一致
+jsonp('https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=迅雷&cb=show');
+
+
+jsonp('https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=你好&cb=show111');
+
+
+function jsonp(url){
+	var oSc=document.createElement('script');
+	oSc.src=url;
+	document.getElementsByTagName('head')[0].appendChild(oSc);
+}
+
+
+
+
+
+
+
+</script>
+</head>
+
+<body>
+
+
+<div id="div1"></div>
+
+
+
+<script>
+
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html> 
