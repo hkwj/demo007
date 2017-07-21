@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset= "UTF-8">
+
+<style>
+div{
+	width:200px; height:100px;
+	background:yellow; position:absolute;
+	left:0; top:0;
+}
+</style>
+
+
+
+
+<script>
+
+function jsonp(url,data,success){
+	data.cb='show';
+	window[data.cb]=success;
+
+	var arr=[];
+	for(var key in data){
+		arr.push(key+'='+encodeURIComponent(data[key]));
+	}
+
+	url=url+'?'+arr.join('&');
+
+	var oSc=document.createElement('script');
+	oSc.src=url;
+	document.getElementsByTagName('head')[0].appendChild(oSc);
+}
+
+
+
+jsonp(
+	'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',
+	{wd:'迅雷'},
+	function (json){
+		alert(json.s);
+	}
+);
+
+
+
+</script>
+</head>
+
+<body>
+
+
+<div id="div1"></div>
+
+
+
+<script>
+
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html> 
