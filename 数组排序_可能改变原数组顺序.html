@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset= "UTF-8">
+
+<style>
+	
+	div{
+		width:200px; height:100px; 
+		border:1px solid red;
+	}
+</style>
+
+</head>
+
+<body>
+
+<div></div>
+
+<script>
+
+arr=[1,2,3,49,49,4,4,4,43,2,2,4,2,1,49,99];
+
+var obj={};
+
+for(var i=0; i<arr.length; i++){
+	var cur=arr[i];
+	if(obj[cur]==cur){
+		// arr[i]=arr[arr.length-1];
+		// arr.length--;
+		// i--;
+		arr.splice(i--,1);
+		continue;
+	}
+	obj[cur]=cur;
+}
+obj=null;
+
+alert(arr)
+
+</script>
+
+
+
+
+</body>
+</html> 
